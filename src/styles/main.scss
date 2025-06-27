@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './variables.scss';
+@import './reset.scss';
+@import './animations.scss';
+
+/* 全局样式 */
+body {
+  font-family: $font-primary;
+  color: $color-text;
+  background-color: $color-background;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 90px;
+}
+
+.section {
+  padding: $spacing-xl 0;
+  
+  @media (min-width: $breakpoint-md) {
+    padding: $spacing-xxl 0;
+  }
+  
+  &__title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: $spacing-lg;
+    position: relative;
+    
+    @media (min-width: $breakpoint-md) {
+      font-size: 2.5rem;
+      margin-bottom: $spacing-xl;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background-color: $color-primary;
+      border-radius: $border-radius-sm;
+    }
+  }
+  
+  &__subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: $spacing-lg;
+    color: rgba($color-text, 0.8);
+    
+    @media (min-width: $breakpoint-md) {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+/* 按钮样式 */
+.button {
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-md;
+  font-weight: 600;
+  transition: all $transition-normal;
+  text-align: center;
+  
+  &--primary {
+    background-color: $color-primary;
+    color: $color-light;
+    
+    &:hover {
+      background-color: darken($color-primary, 10%);
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+  }
+  
+  &--secondary {
+    background-color: $color-secondary;
+    color: $color-light;
+    
+    &:hover {
+      background-color: lighten($color-secondary, 10%);
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+  }
+  
+  &--outline {
+    border: 2px solid $color-primary;
+    color: $color-primary;
+    
+    &:hover {
+      background-color: $color-primary;
+      color: $color-light;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/* 栅格系统 */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -$spacing-md;
+}
+
+.col {
+  padding: 0 $spacing-md;
+  width: 100%;
+  
+  &--half {
+    @media (min-width: $breakpoint-md) {
+      width: 50%;
+    }
+  }
+  
+  &--third {
+    @media (min-width: $breakpoint-md) {
+      width: 33.333%;
+    }
+  }
+  
+  &--quarter {
+    @media (min-width: $breakpoint-md) {
+      width: 25%;
+    }
+  }
+  
+  &--two-thirds {
+    @media (min-width: $breakpoint-md) {
+      width: 66.666%;
+    }
+  }
+}
+
+/* 卡片样式 */
+.card {
+  background-color: $color-secondary;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  transition: transform $transition-normal, box-shadow $transition-normal;
+  height: 100%;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+  }
+  
+  &__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  &__content {
+    padding: $spacing-lg;
+  }
+  
+  &__title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: $spacing-sm;
+    color: $color-light;
+  }
+  
+  &__text {
+    font-size: 0.95rem;
+    color: rgba($color-light, 0.8);
+    margin-bottom: $spacing-md;
+  }
+}
+
+/* 实用类 */
+.text-center {
+  text-align: center;
+}
+
+.mb-sm {
+  margin-bottom: $spacing-sm;
+}
+
+.mb-md {
+  margin-bottom: $spacing-md;
+}
+
+.mb-lg {
+  margin-bottom: $spacing-lg;
+}
+
+.mb-xl {
+  margin-bottom: $spacing-xl;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 滚动指示器 */
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: $color-primary;
+  z-index: 9999;
+  width: 0;
+  transition: width 0.1s;
+} 

@@ -1,0 +1,234 @@
+@import './variables.scss';
+
+/* 淡入动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 从下方滑入 */
+@keyframes slideInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 从上方滑入 */
+@keyframes slideInDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 从左方滑入 */
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 从右方滑入 */
+@keyframes slideInRight {
+  from {
+    transform: translateX(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 放大动画 */
+@keyframes scaleUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 旋转动画 */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 闪烁动画 */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 波纹效果 */
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba($color-primary, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba($color-primary, 0);
+  }
+}
+
+/* 通用动画类 */
+.animate {
+  &--fade-in {
+    animation: fadeIn $transition-normal ease-in-out forwards;
+  }
+  
+  &--slide-up {
+    animation: slideInUp $transition-normal ease-out forwards;
+  }
+  
+  &--slide-down {
+    animation: slideInDown $transition-normal ease-out forwards;
+  }
+  
+  &--slide-left {
+    animation: slideInLeft $transition-normal ease-out forwards;
+  }
+  
+  &--slide-right {
+    animation: slideInRight $transition-normal ease-out forwards;
+  }
+  
+  &--scale-up {
+    animation: scaleUp $transition-normal ease-out forwards;
+  }
+  
+  &--rotate {
+    animation: rotate 2s linear infinite;
+  }
+  
+  &--pulse {
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  &--ripple {
+    animation: ripple 1.5s ease-out infinite;
+  }
+}
+
+/* 动画延迟类 */
+@for $i from 1 through 10 {
+  .delay-#{$i} {
+    animation-delay: $i * 0.1s;
+  }
+}
+
+/* 基础动画 */
+.animate-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s forwards;
+  animation-delay: 0.2s;
+}
+
+.animate-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: fadeInLeft 0.8s forwards;
+  animation-delay: 0.2s;
+}
+
+.animate-right {
+  opacity: 0;
+  transform: translateX(30px);
+  animation: fadeInRight 0.8s forwards;
+  animation-delay: 0.2s;
+}
+
+.animate-fade {
+  opacity: 0;
+  animation: fadeIn 0.8s forwards;
+  animation-delay: 0.2s;
+}
+
+.animate-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: scaleIn 0.8s forwards;
+  animation-delay: 0.2s;
+}
+
+/* 动画关键帧 */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 为项目卡片添加交错动画 */
+.projects__item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+.projects__item:nth-child(1) { animation-delay: 0.1s; }
+.projects__item:nth-child(2) { animation-delay: 0.2s; }
+.projects__item:nth-child(3) { animation-delay: 0.3s; }
+.projects__item:nth-child(4) { animation-delay: 0.4s; }
+.projects__item:nth-child(5) { animation-delay: 0.5s; }
+.projects__item:nth-child(6) { animation-delay: 0.6s; }
+
+/* 视差滚动效果 */
+.parallax-bg {
+  transform: translateY(0);
+  transition: transform 0.1s ease-out;
+} 
